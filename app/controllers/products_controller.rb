@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to products_path
-    flash[:success] = "Product deleted"        
+    flash[:success] = "Product deleted"
   end
 
   def show
@@ -42,6 +42,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :theshold_to_order, :price, :unit_type)
+    params.require(:product).permit(:name, :theshold_to_order, :price, :unit_type, :desired_total)
   end
 end
