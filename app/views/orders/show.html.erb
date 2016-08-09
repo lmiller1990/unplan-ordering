@@ -14,3 +14,7 @@
 
   <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
 <% end %>
+
+<%= semantic_form_for(@shopping_list) do |f| %>
+  <%= f.action :submit %>
+<% end %>

@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @shopping_list = ShoppingList.new
   end
 
   private

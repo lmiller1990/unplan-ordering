@@ -8,7 +8,7 @@
   <% end %>
 
   <% if !session[:current_order_id].nil? %>
-    <%= link_to order_path(Order.find(session[:current_order_id])), class: 'item' do %>
+    <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'item' do %>
       現在の発注を編集
     <% end %>
   <% end %>
