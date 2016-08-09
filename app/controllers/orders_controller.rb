@@ -9,14 +9,15 @@ class OrdersController < ApplicationController
     @order = Order.create!
     @products = @order.products
     flash[:success] = "今日の発注をしましょう"
+    redirect_to @order
   end
 
   def update
     @order = Order.find(params[:id])
-    
+
     (0...total_order_products).each do |idx|
       params[:order][:products_attributes][idx.to_s].each do |k,v|
-        @order.products.first.update_attribute(k, v) unless k == 'id'
+        @order.products[idx].update_attribute(k, v) unless k == 'id'
       end
     end
 

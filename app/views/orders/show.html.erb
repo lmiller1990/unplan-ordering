@@ -1,9 +1,16 @@
-<h2>Order</h2>
-<%= @order.inspect %>
-<br />
-<br />
+<h2>Update Order</h2>
 
-<% @order.products.each do |p| %>
-  <%= p.inspect %>
-  <br /><br />
+<%= semantic_form_for(@order, html: { class: 'ui form' }, remote: true) do |f| %>
+  <%= f.fields_for :products, @order.products do |p| %>
+      <%= p.inputs do %>
+      <div class="three fields">
+        <%= p.input :name, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
+        <%= p.input :theshold_to_order, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
+        <%= p.input :in_stock, wrapper_html: { class: 'three wide field'} %>
+      </div>
+      <% end %>
+      <br />
+  <% end %>
+
+  <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
 <% end %>
