@@ -8,15 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%= semantic_flash %>
+  <%= render('layouts/header') %>
+
 
   <div class="ui centered header">Unplan Ordering System</div>
   <div class="ui grid">
     <div class="two wide column">
-      
+
     </div>
 
     <div class="twelve wide column">
+      <%= semantic_flash %>
+
       <body>
         <%= yield %>
       </body>

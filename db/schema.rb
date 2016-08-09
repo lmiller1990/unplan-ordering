@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808161223) do
+ActiveRecord::Schema.define(version: 20160809085827) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160808161223) do
   create_table "products", force: :cascade do |t|
     t.integer  "theshold_to_order"
     t.integer  "in_stock"
-    t.decimal  "price"
+    t.integer  "price"
     t.string   "name"
     t.string   "day_to_order"
     t.string   "unit_type"

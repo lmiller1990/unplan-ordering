@@ -7,8 +7,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.create!
+    session[:current_order_id] = @order.id
     @products = @order.products
-    flash[:success] = "今日の発注をしましょう"
     redirect_to @order
   end
 
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    flash[:success] = "発注をアップデートした"
+    flash[:success] = "Order updated"
     redirect_to @order
   end
 
@@ -32,6 +32,10 @@ class OrdersController < ApplicationController
   private
 
   def total_order_products
-    params[:order][:products_attributes].size
+    if !params[:order].nil?
+      params[:order][:products_attributes].size
+    else
+      return 0
+    end
   end
 end

@@ -1,1 +1,33 @@
-<h1>発注</h1>
+<h1>Existing Products</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Order Threshold</th>
+      <th>Price</th>
+      <th>Unit Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.theshold_to_order %></td>
+        <td><%= p.price %></td>
+        <td><%= p.unit_type %></td>
+        <td>
+          <%= link_to product_path(p), method: :delete, data: { confirm: "Remove #{p.name} from system?"} do %>
+            <i class="red remove icon"></i>
+          <% end %>
+          <%= link_to edit_product_path(p), title: 'Edit' do %>
+            <i class="edit icon"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

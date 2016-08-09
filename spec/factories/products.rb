@@ -8,6 +8,5 @@ FactoryGirl.define do
     unit_type "MyString"
     base_product false
     order
-    product_list
   end
 end
