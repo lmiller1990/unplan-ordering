@@ -1,10 +1,14 @@
 class ShoppingListsController < ApplicationController
   def create
     @shopping_list = ShoppingList.new
-    
+    current_order.products.each do |p|
+      item = @shopping_list.shopping_items.build
 
-
-    current_order.shopping_list_id
+      # t.integer  "item_amount"
+      # t.integer  "item_cost"
+      # t.integer  "total_cost"
+      # t.string   "item_name"
+    end
   end
 
   def show
