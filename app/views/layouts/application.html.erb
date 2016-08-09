@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unplan</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <%= semantic_flash %>
+
+  <div class="ui centered header">Unplan Ordering System</div>
+  <div class="ui grid">
+    <div class="two wide column">
+      
+    </div>
+
+    <div class="twelve wide column">
+      <body>
+        <%= yield %>
+      </body>
+    </div>
+
+    <div class="two wide column">
+
+    </div>
+
+  </div>
+</html>

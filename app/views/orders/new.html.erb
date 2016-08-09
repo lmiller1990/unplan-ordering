@@ -1,0 +1,15 @@
+<h3>New Order</h3>
+
+<%= semantic_form_for(@order, html: { class: 'ui form' }) do |f| %>
+  <%= f.semantic_fields_for :products, @order.products do |p| %>
+      <%= p.inputs do %>
+      <div class="three fields">
+      <%= p.input :name, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
+      <%= p.input :threshold_to_order, wrapper_html: { class: 'three wide field'} %>
+      <%= p.input :in_stock, wrapper_html: { class: 'three wide field'} %>
+      </div>
+      <% end %>
+  <% end %>
+
+  <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
+<% end %>

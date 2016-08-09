@@ -1,0 +1,9 @@
+<h2>Order</h2>
+<%= @order.inspect %>
+<br />
+<br />
+
+<% @order.products.each do |p| %>
+  <%= p.inspect %>
+  <br /><br />
+<% end %>
