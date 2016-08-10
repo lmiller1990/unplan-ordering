@@ -21,3 +21,13 @@
 
 ja:
   unplan_ordering_system: "Unplan発注システム"
+  new_order: "新しい発注"
+  current_order: "本日発注"
+  new_product: "新しい商品追加"
+  view_all_products: "全商品表示"
+  product_name: "商品"
+  cost_per_unit: "個別価格"
+  total_units_needed: "購買数量"
+  total_cost: "総額"
+  print_shopping_list: "買い物リスト印刷"
+  language: "言語"

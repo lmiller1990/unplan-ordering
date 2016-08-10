@@ -4,23 +4,31 @@
   <% end %>
 
   <%= link_to new_order_path, class: 'item' do %>
-    New Order
+    <%= t :new_order %>
   <% end %>
 
   <% if !session[:current_order_id].nil? %>
     <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'item' do %>
-      Current Order
+      <%= t :current_order %>
     <% end %>
   <% end %>
 
   <div class="right menu">
     <%= link_to new_product_path, class: 'item' do %>
-      New Product
+      <%= t :new_product %>
     <% end %>
 
     <%= link_to products_path, class: 'item' do %>
-      View All Products
+      <%= t :view_all_products %>
     <% end %>
+    <div class="ui simple dropdown item">
+      <div class="text"><%= t :language %></div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <%= link_to "English", { locale: 'en' }, class: 'item'%>
+        <%= link_to "日本語", { locale: 'ja' }, class: 'item' %>
+      </div>
+    </div>
   </div>
 
 </div>
