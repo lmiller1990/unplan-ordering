@@ -1,2 +1,24 @@
-<h1>ShoppingLists#show</h1>
-<p>Find me in app/views/shopping_lists/show.html.erb</p>
+<h1>Shopping List for order <%= @current_order.id %> (Created <%= time_ago_in_words(@current_order.created_at) %> ago) </h1>
+
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Cost per unit</th>
+      <th>Total units needed</th>
+      <th>Total cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shopping_items.each do |item| %>
+      <tr>
+        <td><%= item.item_name %></td>
+        <td><%= item.item_cost %></td>
+        <td><%= item.item_amount %></td>
+        <td><%= item.total_cost %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -6,6 +6,7 @@
       <div class="three fields">
         <%= p.input :name, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
         <%= p.input :theshold_to_order, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
+        <%= p.input :desired_total, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>
         <%= p.input :in_stock, wrapper_html: { class: 'three wide field'} %>
       </div>
       <% end %>
@@ -15,6 +16,6 @@
   <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
 <% end %>
 
-<%= semantic_form_for(@shopping_list) do |f| %>
-  <%= f.action :submit %>
+<%= semantic_form_for(@shopping_list, remote: true) do |f| %>
+  <%= f.action :submit, button_html: { onclick: "$('#order_submit_action').submit()", class: 'small left floated ui green submit button' }%>
 <% end %>

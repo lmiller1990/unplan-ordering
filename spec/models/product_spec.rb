@@ -5,7 +5,6 @@ RSpec.describe Product, type: :model do
     it 'returns a list of base products' do
       base_product = FactoryGirl.create(:product, base_product: true)
       non_base_product = FactoryGirl.create(:product, base_product: false)
-      products = [base_product, non_base_product]
 
       expect(Product.base_products).to match_array(base_product)
     end
