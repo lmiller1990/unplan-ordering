@@ -3,12 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_locale
-    if params[:locale].present?
-      flash[:warning] = "Changing locale from: ", I18n.locale
       I18n.locale = params[:locale]
-      flash[:warning] = "Changing locale to: ", I18n.locale
-
-    end
   end
 
   def current_order
