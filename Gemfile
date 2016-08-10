@@ -33,6 +33,11 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 # formtastic for forms
 gem 'formtastic', '~> 3.0'
 
+# pdf maker
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do

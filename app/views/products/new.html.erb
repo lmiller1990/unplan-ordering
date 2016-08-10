@@ -1,16 +1,17 @@
 <h1>Add a new product to orders</h1>
 
 <%= semantic_form_for(@product, html: { class: 'ui form'}) do |f| %>
-  <%= f.inputs do %>
-    <div class="fields">
-      <%= f.input :name, wrapper_html: { class: 'field' } %>
-      <%= f.input :theshold_to_order, wrapper_html: { class:  'field' } %>
-      <%= f.input :price, wrapper_html: { class: 'field' } %>
-      <%= f.input :desired_total, wrapper_html: { class: 'field' } %>
-      <%= f.input :unit_type, wrapper_html: { class: 'field' } %>
-    </div>
-  <% end %>
+  <div class="ui segment">
+    <%= f.inputs do %>
+      <div class="fields">
+        <%= f.input :name, wrapper_html: { class: 'field' } %>
+        <%= f.input :theshold_to_order, wrapper_html: { class:  'field' } %>
+        <%= f.input :price, wrapper_html: { class: 'field' } %>
+        <%= f.input :desired_total, wrapper_html: { class: 'field' } %>
+        <%= f.input :unit_type, wrapper_html: { class: 'field' } %>
+      </div>
+    <% end %>
+  </div>
     <br />
-    <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
-    <%#= f.action : %>
+  <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
 <% end %>
