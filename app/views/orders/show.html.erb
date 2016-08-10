@@ -20,5 +20,5 @@
 <% end %>
 
 <%= semantic_form_for(@shopping_list, remote: true) do |f| %>
-  <%= f.action :submit, button_html: { onclick: "$('#order_submit_action').submit()", class: 'small left floated ui green submit button' }%>
+  <%= f.action :submit, format: 'pdf', button_html: { onclick: "$('#order_submit_action').submit()", class: 'small left floated ui green submit button' }%>
 <% end %>

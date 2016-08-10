@@ -31,7 +31,14 @@ class ShoppingListsController < ApplicationController
     @current_order = current_order
     @shopping_items = @shopping_list.shopping_items.need_to_order
 
-    
+    respond_to do |format|
+      format.pdf do
+        render pdf: "shop_list.pdf",
+        template: "shopping_lists/show.pdf.erb",
+        locals: { shopping_list: @shopping_list, current_order: @current_order, shopping_items: @shopping_items }
+      end
+      format.html
+    end
   end
 
   def index

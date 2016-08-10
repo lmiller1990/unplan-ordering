@@ -7,7 +7,7 @@ feature 'create an order', type: :feature do
     visit root_path
     expect do
       expect do
-        click_on '新しい発注'
+        click_on 'New Order'
       end.to change(Order, :count).by(1)
     end.to change(Product, :count).by(1)
 

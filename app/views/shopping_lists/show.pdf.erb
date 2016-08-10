@@ -1,5 +1,5 @@
-<h1>Shopping List for <%= @current_order.created_at.strftime("%A") %>,
-  <%= @current_order.created_at.strftime("%x") %> </h1>
+<h2>Unplan Shopping List for <%= current_order.created_at.strftime("%A") %>,
+  <%= current_order.created_at.strftime("%x") %> </h2>
 
 
 <table class="ui blue celled table">
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @shopping_items.each do |item| %>
+    <% shopping_items.each do |item| %>
       <tr>
         <td><%= item.item_name %></td>
         <td><%= item.item_cost %></td>
@@ -28,11 +28,7 @@
       <th></th>
       <th></th>
       <th></th>
-      <th>Total: <%= @shopping_items.sum("total_cost")%></th>
+      <th>Total: <%= shopping_items.sum("total_cost")%></th>
     </tr>
   </tfoot>
 </table>
-
-<%= link_to shopping_list_path(@shopping_list, format: :pdf), target: 'blank', class: 'ui right floated labeled icon button' do %>
-  <i class="print icon"></i> Print shopping list
-<% end %>
