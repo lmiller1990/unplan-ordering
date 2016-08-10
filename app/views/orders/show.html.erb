@@ -1,7 +1,8 @@
-<h2>Update Order</h2>
+<h2>Update Order for <%= @order.created_at.strftime("%A") %>,
+  <%= @order.created_at.strftime("%x") %> </h2>
 
 <%= semantic_form_for(@order, html: { class: 'ui form' }, remote: true) do |f| %>
-  <%= f.fields_for :products, @order.products do |p| %>
+  <%= f.semantic_fields_for :products, @order.products do |p| %>
       <%= p.inputs do %>
       <div class="three fields">
         <%= p.input :name, input_html: { readonly: true }, wrapper_html: { class: 'three wide field'} %>

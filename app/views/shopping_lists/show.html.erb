@@ -1,7 +1,8 @@
-<h1>Shopping List for order <%= @current_order.id %> (Created <%= time_ago_in_words(@current_order.created_at) %> ago) </h1>
+<h1>Shopping List for <%= @current_order.created_at.strftime("%A") %>,
+  <%= @current_order.created_at.strftime("%x") %> </h1>
 
 
-<table class="ui celled table">
+<table class="ui blue celled table">
   <thead>
     <tr>
       <th>Product Name</th>
@@ -21,4 +22,13 @@
       </tr>
     <% end %>
   </tbody>
+
+  <tfoot>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>Total: <%= @shopping_items.sum("total_cost")%></th>
+    </tr>
+  </tfoot>
 </table>
