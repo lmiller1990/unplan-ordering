@@ -30,6 +30,8 @@ class ShoppingListsController < ApplicationController
     @shopping_list = ShoppingList.find(params[:id])
     @current_order = current_order
     @shopping_items = @shopping_list.shopping_items.need_to_order
+
+    
   end
 
   def index
