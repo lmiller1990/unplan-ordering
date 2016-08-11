@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   after_create :add_products
   has_one :product_list
   has_many :products
-  belongs_to :shopping_list, optional: true
+  belongs_to :shopping_list, optional: true, dependent: :destroy
 
   accepts_nested_attributes_for :products
 

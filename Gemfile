@@ -37,6 +37,9 @@ gem 'formtastic', '~> 3.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+# weather
+gem 'openweather2'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

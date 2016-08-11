@@ -1,3 +1,42 @@
-<%= link_to new_order_path, title: 'Create order', class: 'ui button' do %>
-  Create order
-<% end %>
+<div class="ui cards">
+  <div class="card">
+    <div class="content">
+      <div class="header">
+        Ordering
+      </div>
+      <div class="meta"><!-- extras? --></div>
+      <div class="description">
+        Make a new order, or view past orders.
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="two ui buttons">
+        <%= link_to new_order_path, title: 'Create order', class: 'ui basic green button' do %>
+          <%= t :create_new_order %>
+        <% end %>
+
+        <%= link_to orders_path, class: 'ui basic blue button' do %>
+          <%= t :show_all_orders %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="ui compact segment">
+Weather
+  <div class="ui statistics">
+    <div class="grey statistic">
+      <div class="value"><%= @weather.temperature %></div>
+      <div class="label"><%= t :minimum_temperature %></div>
+    </div>
+  </div>
+  <div class="ui statistics">
+    <div class="grey statistic">
+      <div class="value"><%= @weather.max_temperature %></div>
+      <div class="label"><%= t :maximum_temperature %></div>
+    </div>
+  </div>
+</div>
