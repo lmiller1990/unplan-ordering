@@ -1,37 +1,7 @@
-<h1>Shopping List for <%= @current_order.created_at.strftime("%A") %>,
-  <%= @current_order.created_at.strftime("%x") %> </h1>
+<h4>Shopping List for <%= @current_order.created_at.strftime("%A") %>,
+  <%= @current_order.created_at.strftime("%x") %>, <%= @current_order.created_at.strftime("%X") %> </h4>
 
-
-<table class="ui blue celled table">
-  <thead>
-    <tr>
-      <th><%= t :product_name %></th>
-      <th><%= t :cost_per_unit %></th>
-      <th><%= t :total_units_needed %></th>
-      <th><%= t :total_cost %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shopping_items.each do |item| %>
-      <tr>
-        <td><%= item.item_name %></td>
-        <td><%= item.item_cost %></td>
-        <td><%= item.item_amount %></td>
-        <td><%= item.total_cost %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th><%= t :total_cost %> <%= @shopping_items.sum("total_cost")%></th>
-    </tr>
-  </tfoot>
-</table>
+<%= render partial: 'shopping_list', locals: { shopping_items: @shopping_items } %>
 
 <%= link_to shopping_list_path(@shopping_list, format: :pdf), target: 'blank', class: 'ui right floated labeled icon button' do %>
   <i class="print icon"></i> <%= t :print_shopping_list %>

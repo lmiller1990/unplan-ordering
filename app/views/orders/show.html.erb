@@ -1,5 +1,5 @@
-<h2>Update Order for <%= @order.created_at.strftime("%A") %>,
-  <%= @order.created_at.strftime("%x") %> </h2>
+<h4>Update Order for <%= @order.created_at.strftime("%A") %>,
+  <%= @order.created_at.strftime("%x") %> (<%= @order.created_at.strftime("%X") %>) </h4>
 
 <%= semantic_form_for(@order, html: { class: 'ui form' }, remote: true) do |f| %>
   <div class="ui segment">
@@ -17,6 +17,7 @@
     <% end %>
   </div>
   <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
+  <%= link_to orders_path, class: 'ui small right floated button' do %> <%= t :show_all_orders %> <% end %>
 <% end %>
 
 <%= semantic_form_for(@shopping_list, remote: true) do |f| %>

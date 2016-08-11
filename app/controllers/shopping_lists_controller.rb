@@ -29,7 +29,7 @@ class ShoppingListsController < ApplicationController
   def show
     @shopping_list = ShoppingList.find(params[:id])
     @current_order = current_order
-    @shopping_items = @shopping_list.shopping_items.need_to_order
+    @shopping_items = @shopping_list.items_needed_to_order
 
     respond_to do |format|
       format.pdf do

@@ -1,0 +1,30 @@
+<table class="ui blue celled table">
+  <thead>
+    <tr>
+      <th><%= t :product_name %></th>
+      <th><%= t :cost_per_unit %></th>
+      <th><%= t :total_units_needed %></th>
+      <th><%= t :total_cost %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% shopping_items.each do |item| %>
+      <tr>
+        <td><%= item.item_name %></td>
+        <td><%= item.item_cost %></td>
+        <td><%= item.item_amount %></td>
+        <td><%= item.total_cost %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th><%= t :total_cost %> <%= shopping_items.sum("total_cost")%></th>
+    </tr>
+  </tfoot>
+</table>
