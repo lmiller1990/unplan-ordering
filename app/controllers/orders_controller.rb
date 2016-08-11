@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    puts @orders.count
     @shopping_items = []
 
     @orders.each do |order|

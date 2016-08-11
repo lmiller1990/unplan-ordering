@@ -11,10 +11,10 @@ feature 'create an order', type: :feature do
       end.to change(Order, :count).by(1)
     end.to change(Product, :count).by(1)
 
+    fill_in :order_products_attributes_0_in_stock, with: 50
     click_on 'Update Order'
 
-    expect(page).to have_content('Order updated')
-
     expect(page).to have_selector("#order_products_attributes_0_name[value='#{base_product.name}']")
+    expect(page).to have_selector("#order_products_attributes_0_in_stock[value='50']")
   end
 end
