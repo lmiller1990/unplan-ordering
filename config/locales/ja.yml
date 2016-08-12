@@ -31,3 +31,5 @@ ja:
   total_cost: "総額"
   print_shopping_list: "買い物リスト印刷"
   language: "言語"
+  ordering: "発注"
+  products: "商品"

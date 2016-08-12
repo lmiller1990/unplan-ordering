@@ -6,6 +6,10 @@ class StaticPagesController < ApplicationController
       session.delete(:current_order_id)
     end
 
+    @response = Weather.lookup(28414042, Weather::Units::CELSIUS)
+    @forecasts = @response.forecasts.first(5)
+
+
     @weather = Openweather2.get_weather(city: 'tokyo', units: 'metric')
     # <Openweather2::Weather:0x007f9aca0062e0 @city="Tokyo",
     # @longitude=139.69, @latitude=35.69,

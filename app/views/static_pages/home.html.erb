@@ -1,8 +1,8 @@
-<div class="ui cards">
-  <div class="card">
+<div class="ui three stackable cards">
+  <div class="ui card">
     <div class="content">
       <div class="header">
-        Ordering
+        <%= t :ordering %>
       </div>
       <div class="meta"><!-- extras? --></div>
       <div class="description">
@@ -21,22 +21,80 @@
       </div>
     </div>
   </div>
-</div>
 
+  <div class="ui card">
+    <div class="content">
+      <div class="header">
+        <%= t :products %>
+      </div>
+      <div class="meta"><!-- extras? --></div>
+      <div class="description">
+        Add a new product, or view existing ones.
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="two ui buttons">
+        <%= link_to new_product_path, class: 'ui basic green button' do %>
+          <%= t :create_new_products %>
+        <% end %>
 
-
-<div class="ui compact segment">
-Weather
-  <div class="ui statistics">
-    <div class="grey statistic">
-      <div class="value"><%= @weather.temperature %></div>
-      <div class="label"><%= t :minimum_temperature %></div>
+        <%= link_to products_path, class: 'ui basic blue button' do %>
+          <%= t :show_all_products %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="ui statistics">
-    <div class="grey statistic">
-      <div class="value"><%= @weather.max_temperature %></div>
-      <div class="label"><%= t :maximum_temperature %></div>
+
+  <div class="ui card">
+    <div class="content">
+      <div class="header">
+        <%= t :language %>
+      </div>
+      <div class="meta"><!-- extras? --></div>
+      <div class="description">
+        Change Language
+      </div>
+    </div>
+    <div class="extra content">
+      <div class="two ui buttons">
+        <%= link_to "English", { locale: 'en' }, class: "ui basic yellow button" %>
+        <%= link_to "日本語", { locale: 'ja' }, class: 'ui basic red button' %>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="ui divider"></div>
+
+<!-- weather -->
+<h2 class="ui centered header"><%= t :weather_forecast %> <%= "(#{@response.location.city}, #{@response.location.country})"%></h2>
+
+<div class="ui five stackable cards">
+
+  <% @forecasts.each do |forecast| %>
+  <div class="ui card">
+    <div class="content">
+      <img src="<%= @response.image.url %>" class="right floated mini ui image">
+      <div class="header">
+        <%= t forecast.day.to_sym %>
+      </div>
+      <div class="meta"><%= t forecast.text.to_sym %></div>
+      <div class="description">
+
+        <div class="ui small statistics">
+          <div class="grey statistic">
+            <div class="value"><%= forecast.high %></div>
+            <div class="label"><%= t :maximum_temperature %></div>
+          </div>
+        </div>
+        <div class="ui small statistics">
+          <div class="grey statistic">
+            <div class="value"><%= forecast.low %></div>
+            <div class="label"><%= t :minimum_temperature %></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>

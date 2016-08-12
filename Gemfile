@@ -39,6 +39,7 @@ gem 'wkhtmltopdf-binary'
 
 # weather
 gem 'openweather2'
+gem 'weather-api'
 
 
 # Use Capistrano for deployment
