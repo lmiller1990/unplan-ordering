@@ -1,3 +1,13 @@
+<!-- current order -->
+<% if !session[:current_order_id].nil? %>
+  <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'item' do %>
+    <%= t :current_order %>
+  <% end %>
+<% end %>
+
+
+<div class="ui divider"></div>
+<!-- new order etc -->
 <div class="ui three stackable cards">
   <div class="ui card">
     <div class="content">

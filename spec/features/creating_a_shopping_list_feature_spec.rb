@@ -25,6 +25,7 @@ feature 'create a shopping list', type: :feature do
 
     expect(page).to have_content('Shopping List for')
 
+    visit root_path
     click_on 'Current Order'
     fill_in :order_products_attributes_0_in_stock, with: 3
 
