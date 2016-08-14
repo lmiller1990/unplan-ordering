@@ -57,8 +57,13 @@
 
   </div> <!-- end second column -->
 </div> <!-- end grid -->
-
 <div class="ui divider"></div>
+
+<h4 class="ui center aligned icon header">
+  <i class="settings icon"></i>
+  <%= t :options %>
+  <br />
+</h4>
 <!-- new order etc -->
 <div class="ui three stackable cards">
   <div class="ui card">
@@ -128,7 +133,10 @@
 
 <div class="ui divider"></div>
 <!-- weather -->
-<h2 class="ui centered header"><%= t :weather_forecast %> <%= "(#{t @api_response.location.city.to_sym}, #{t @api_response.location.country.to_sym})"%></h2>
+<h4 class="ui center aligned icon header">
+  <i class="sun icon"></i>
+  <%= t :weather_forecast %> <%= "(#{t @api_response.location.city.to_sym}, #{t @api_response.location.country.to_sym})"%>
+</h4>
 
 <div class="ui four stackable cards">
 
