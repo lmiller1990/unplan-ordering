@@ -8,6 +8,6 @@ FactoryGirl.define do
     unit_type "MyString"
     desired_total 10
     base_product false
-    order
+    order nil
   end
 end

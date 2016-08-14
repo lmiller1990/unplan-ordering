@@ -20,3 +20,8 @@ $(function(){
   $('.ui.dropdown').dropdown();
   return false;
 })
+
+function submitter() {
+  $('#order_submit_action').submit()
+  console.log("submitted")
+}

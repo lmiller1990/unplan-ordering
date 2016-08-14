@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'viewing historical orders', type: :feature do
   scenario 'shopping lists are displayed for all previous orders' do
+    base_product = FactoryGirl.create(:product, base_product: true)
     order = FactoryGirl.create(:order)
     another_order = FactoryGirl.create(:order)
-    base_product = FactoryGirl.create(:product, order: order, base_product: true)
 
     visit orders_path
     expect(Order.count).to eq 2

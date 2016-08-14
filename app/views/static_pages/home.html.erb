@@ -73,7 +73,7 @@
     </div>
     <div class="extra content">
       <div class="two ui buttons">
-        <%= link_to new_order_path, title: 'Create order', class: 'ui basic green button' do %>
+        <%= link_to new_order_path,  data: { disable_with: 'Creating...' }, title: 'Create order', class: 'ui basic green button' do %>
           <%= t :create_new_order %>
         <% end %>
 

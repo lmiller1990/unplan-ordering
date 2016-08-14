@@ -6,6 +6,11 @@ class ShoppingListsController < ApplicationController
       @was_created = true
     end
 
+    if @was_created
+      current_order.update_attributes(shopping_list_id: @shopping_list.id)
+      current_order.save
+    end
+
     current_order.products.each_with_index do |p,idx|
       item = nil
       if @was_created

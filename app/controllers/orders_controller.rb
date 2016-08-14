@@ -1,14 +1,15 @@
+require 'pry-remote'
 class OrdersController < ApplicationController
   def create
   end
 
   def index
     @orders = Order.all
-    puts @orders.count
-    @shopping_items = []
+
+    @shopping_lists = []
+    @was_created = false
 
     @orders.each do |order|
-      @was_created = false
       @shopping_list = ShoppingList.find_or_create_by(order_id: order.id) do |s|
         @was_created = true
       end
@@ -20,16 +21,18 @@ class OrdersController < ApplicationController
         else
           item = @shopping_list.shopping_items[idx]
         end
-
-        item.set_shopping_item_attributes(p)
-        if item.save
-          # no problems
-          item.update_attributes(shopping_list_id: @shopping_list.id)
-        else
-          raise "Error saving item: #{item.inspect}"
+        if !item.nil?
+          item.set_shopping_item_attributes(p)
+          if item.save
+            # no problems
+            item.update_attributes(shopping_list_id: @shopping_list.id)
+          else
+            raise "Error saving item: #{item.inspect}"
+          end
         end
+        #@shopping_items.push(@shopping_list.items_needed_to_order)
       end
-      @shopping_items.push(@shopping_list.items_needed_to_order)
+      @shopping_lists.push(@shopping_list)
     end
   end
 

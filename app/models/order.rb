@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
   after_create :add_products
   has_one :product_list
   has_many :products

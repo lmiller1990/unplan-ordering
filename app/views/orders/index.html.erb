@@ -1,17 +1,15 @@
 <h2><%= t :order_history %></h2>
 
 
-<% @shopping_items.each_with_index do |items, idx| %>
-
-  <% @time = @orders[idx].created_at %>
+<% @shopping_lists.each do |list| %>
+  <% @order = Order.find(list.order_id); @time = @order.created_at %>
 
   <h5>Shopping List for <%= @time.strftime("%A") %>, <%= @time.strftime("%x") %>, <%= @time.strftime("%X") %> </h5>
 
-  <%= link_to order_path(@orders[idx]), method: :delete, class: 'ui small basic right floated labeled icon button',
+  <%= link_to order_path(@order), method: :delete, class: 'ui small basic right floated labeled icon button',
       data: { confirm: "Remove this order from system?"} do %>
     <i class="red remove icon"></i>Delete Order
   <% end %>
-
-  <%= render partial: 'shopping_lists/shopping_list', locals: { shopping_items: items } %>
+  <%= render partial: 'shopping_lists/shopping_list', locals: { shopping_items: list.items_needed_to_order } %>
 
 <% end %>

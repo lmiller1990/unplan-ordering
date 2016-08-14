@@ -13,5 +13,5 @@
     <% end %>
   </div>
     <br />
-  <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
+  <%= f.action :submit, data: { disable_with: 'Submitting...' }, button_html: { class: 'small right floated ui blue submit button' } %>
 <% end %>

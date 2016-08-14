@@ -1,4 +1,5 @@
 class ShoppingItem < ApplicationRecord
+
   belongs_to :shopping_list
 
   scope :need_to_order, -> { where(need_to_order: true) }

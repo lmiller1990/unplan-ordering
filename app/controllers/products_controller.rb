@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     else
       flash[:failure] = "Product not created"
     end
+    redirect_to root_path
   end
 
   def new

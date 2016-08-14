@@ -1,7 +1,7 @@
 <h4>Update Order for <%= @order.created_at.strftime("%A") %>,
   <%= @order.created_at.strftime("%x") %> (<%= @order.created_at.strftime("%X") %>) </h4>
 
-<%= semantic_form_for(@order, html: { class: 'ui form' }) do |f| %>
+<%= semantic_form_for(@order, html: { class: 'ui form' }, remote: true) do |f| %>
   <div class="ui segment">
     <%= f.semantic_fields_for :products, @order.products do |p| %>
 
@@ -16,10 +16,10 @@
         <br />
     <% end %>
   </div>
-  <%= f.action :submit, button_html: { class: 'small right floated ui blue submit button' } %>
+  <%= f.action :submit, data: { disable_with: 'Submitting...' }, button_html: { class: 'small right floated ui blue submit button' } %>
   <%= link_to orders_path, class: 'ui small right floated button' do %> <%= t :show_all_orders %> <% end %>
 <% end %>
 
 <%= semantic_form_for(@shopping_list) do |f| %>
-  <%= f.action :submit, format: 'pdf', button_html: { onclick: "$('#order_submit_action').submit()", class: 'small left floated ui green submit button' }%>
+  <%= f.action :submit, format: 'pdf',  data: { disable_with: 'Submitting...' }, button_html: { onclick: "submitter()", class: 'small left floated ui green submit button' }%>
 <% end %>

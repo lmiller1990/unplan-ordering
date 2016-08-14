@@ -40,6 +40,8 @@ gem 'wkhtmltopdf-binary'
 # weather
 gem 'openweather2'
 gem 'weather-api'
+gem 'kaminari'
+
 
 # charts!
 gem "chartkick"
