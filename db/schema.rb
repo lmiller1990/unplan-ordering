@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809212316) do
+ActiveRecord::Schema.define(version: 20160814060059) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at",       null: false
@@ -36,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160809212316) do
     t.integer  "product_list_id"
     t.boolean  "base_product",      default: false, null: false
     t.integer  "desired_total"
-    t.integer  "stockup_total"
   end
 
   create_table "shopping_items", force: :cascade do |t|
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160809212316) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.boolean  "need_to_order",    default: false
-    t.index ["shopping_list_id"], name: "index_shopping_items_on_shopping_list_id"
+    t.index ["shopping_list_id"], name: "index_shopping_items_on_shopping_list_id", using: :btree
   end
 
   create_table "shopping_lists", force: :cascade do |t|
@@ -57,4 +59,5 @@ ActiveRecord::Schema.define(version: 20160809212316) do
     t.integer  "order_id"
   end
 
+  add_foreign_key "shopping_items", "shopping_lists"
 end

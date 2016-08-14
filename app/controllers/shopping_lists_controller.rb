@@ -1,9 +1,13 @@
 class ShoppingListsController < ApplicationController
 
   def create
+    #binding.remote_pry
+
+    puts "Creating shopping list"
     @was_created = false
     @shopping_list = ShoppingList.find_or_create_by(order_id: current_order.id) do |s|
       @was_created = true
+      puts "Created new one!"
     end
 
     current_order.products.each_with_index do |p,idx|
