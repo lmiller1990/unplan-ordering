@@ -12,7 +12,7 @@ require "action_cable/engine"
 require "sprockets/railtie"
 require "openweather2"
 require 'weather-api'
-require 'pry-remote'
+# require 'pry-remote'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
