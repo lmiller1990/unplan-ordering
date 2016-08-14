@@ -33,3 +33,5 @@ ja:
   language: "言語"
   ordering: "発注"
   products: "商品"
+  minimum_temperature: "最低気温"
+  maximum_temperature: "最高気温"

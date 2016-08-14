@@ -41,7 +41,8 @@ gem 'wkhtmltopdf-binary'
 gem 'openweather2'
 gem 'weather-api'
 
-
+# charts!
+gem "chartkick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do

@@ -7,10 +7,15 @@ class StaticPagesController < ApplicationController
     end
 
     @response = Weather.lookup(28414042, Weather::Units::CELSIUS)
+
     @forecasts = @response.forecasts.first(5)
+    @today = @response.forecasts.first(1)
+    puts @today.inspect
+    @forecasts = @forecasts - @today
 
 
-    @weather = Openweather2.get_weather(city: 'tokyo', units: 'metric')
+
+    # @weather = Openweather2.get_weather(city: 'tokyo', units: 'metric')
     # <Openweather2::Weather:0x007f9aca0062e0 @city="Tokyo",
     # @longitude=139.69, @latitude=35.69,
     # @temperature=30.7, @pressure=1004, @humidity=19,
