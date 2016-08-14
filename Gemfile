@@ -40,9 +40,7 @@ gem 'wkhtmltopdf-binary'
 # weather
 gem 'openweather2'
 gem 'weather-api'
-gem 'kaminari'
-
-
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 # charts!
 gem "chartkick"
 # Use Capistrano for deployment

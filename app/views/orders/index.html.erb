@@ -1,8 +1,7 @@
 <h2><%= t :order_history %></h2>
 
-
 <% @shopping_lists.each do |list| %>
-  <% @order = Order.find(list.order_id); @time = @order.created_at %>
+  <% @order = Order.find(list.order_id); @time = list.created_at %>
 
   <h5>Shopping List for <%= @time.strftime("%A") %>, <%= @time.strftime("%x") %>, <%= @time.strftime("%X") %> </h5>
 
@@ -13,3 +12,5 @@
   <%= render partial: 'shopping_lists/shopping_list', locals: { shopping_items: list.items_needed_to_order } %>
 
 <% end %>
+
+<%= paginate @shopping_lists %>

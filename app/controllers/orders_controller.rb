@@ -1,11 +1,9 @@
-require 'pry-remote'
 class OrdersController < ApplicationController
   def create
   end
 
   def index
     @orders = Order.all
-
     @shopping_lists = []
     @was_created = false
 
@@ -17,6 +15,8 @@ class OrdersController < ApplicationController
       order.products.each_with_index do |p,idx|
         item = nil
         if @was_created
+          # shopping list creation date should be same as order!
+          @shopping_list.update_attributes(created_at: order.created_at)
           item = @shopping_list.shopping_items.build
         else
           item = @shopping_list.shopping_items[idx]
@@ -34,6 +34,9 @@ class OrdersController < ApplicationController
       end
       @shopping_lists.push(@shopping_list)
     end
+    @shopping_lists = Kaminari.paginate_array(@shopping_lists.sort_by {
+      |i| i.created_at
+    }.reverse).page(params[:page]).per(5)
   end
 
   def new
@@ -52,7 +55,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    # flash[:success] = "Order updated"
+    flash[:success] = "Order updated!"
     redirect_to @order
   end
 
