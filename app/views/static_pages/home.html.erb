@@ -9,7 +9,7 @@
           </div>
           <div class="meta"><!-- extras? --></div>
           <div class="description">
-            The order you are current working on.
+            <%= t :current_order_description %>
           </div>
         </div>
         <div class="extra content">
@@ -35,19 +35,19 @@
         <div class="header">
           <%= t @today.first.day.to_sym %>
         </div>
-        <div class="meta"><%= t @today.first.text.to_sym %></div>
+        <div class="meta"><%= t @today.first.text.gsub(" ", "_").to_sym %></div>
         <div class="description">
           <div class="ui two column centered grid">
             <div class="column">
               <div class="ui red statistic">
                 <div class="value"><%= @today.first.high %></div>
-                <div class="label"><%= t :maximum_temperature %></div>
+                <div class="label"><%= t :maximum_temp %></div>
               </div>
             </div>
             <div class="column">
               <div class="ui blue statistic">
                 <div class="value"><%= @today.first.low %></div>
-                <div class="label"><%= t :minimum_temperature %></div>
+                <div class="label"><%= t :minimum_temp %></div>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
       </div>
       <div class="meta"><!-- extras? --></div>
       <div class="description">
-        Make a new order, or view past orders.
+        <%= t :order_description %>
       </div>
     </div>
     <div class="extra content">
@@ -91,7 +91,7 @@
       </div>
       <div class="meta"><!-- extras? --></div>
       <div class="description">
-        Add a new product, or view existing ones.
+        <%= t :product_description %>
       </div>
     </div>
     <div class="extra content">
@@ -114,7 +114,7 @@
       </div>
       <div class="meta"><!-- extras? --></div>
       <div class="description">
-        Change Language
+        <%= t :language_description %>
       </div>
     </div>
     <div class="extra content">

@@ -23,3 +23,12 @@ en:
   hello: "Hello world"
   Tokyo: "Tokyo"
   Japan: "Japan"
+  order_description: "Make a new order, or view past orders."
+  product_description: "Add a new product, or view existing ones."
+  language_description: "Change Language"
+  current_order_description: "The order you are current working on."
+
+  formtastic:
+    labels:
+      product:
+        theshold_to_order: "Threshold to order"
