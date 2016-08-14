@@ -6,10 +6,10 @@ class StaticPagesController < ApplicationController
       session.delete(:current_order_id)
     end
 
-    @api_response = Weather.lookup(28414042, Weather::Units::CELSIUS)
+    @response = Weather.lookup(28414042, Weather::Units::CELSIUS)
 
-    @forecasts = @api_response.forecasts.first(5)
-    @today = @api_response.forecasts.first(1)
+    @forecasts = @response.forecasts.first(5)
+      @today = @response.forecasts.first(1)
     @forecasts = @forecasts - @today
   end
 end
