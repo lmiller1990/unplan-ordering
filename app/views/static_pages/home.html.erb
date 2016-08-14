@@ -1,57 +1,62 @@
 <!-- current order -->
 <div class="ui two column grid">
-  div.column
-  <% if !session[:current_order_id].nil? %>
-  <div class="ui centered card">
-    <div class="content">
-      <div class="header">
-        <%= t :current_order %>
-      </div>
-      <div class="meta"><!-- extras? --></div>
-      <div class="description">
-        The order you are current working on.
-      </div>
-    </div>
-    <div class="extra content">
-      <div class="two ui buttons">
-        <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'ui basic green button' do %>
-          <%= t :update_current_order %>
-        <% end %>
-
-        <%= link_to shopping_list_path(Order.find(session[:current_order_id])), title: 'Shopping List', class: 'ui basic blue button' do %>
-          <%= t :get_shopping_list %>
-        <% end %>
-
-      </div>
-    </div>
-  </div>
-  <% end %>
-
-  <div class="ui card">
-    <div class="content">
-      <img src="<%= @response.image.url %>" class="right floated mini ui image">
-      <div class="header">
-        <%= t @today.first.day.to_sym %>
-      </div>
-      <div class="meta"><%= t @today.first.text.to_sym %></div>
-      <div class="description">
-
-        <div class="ui tiny statistics">
-          <div class="red statistic">
-            <div class="value"><%= @today.first.high %></div>
-            <div class="label"><%= t :maximum_temperature %></div>
+  <div class="column">
+    <% if !session[:current_order_id].nil? %>
+      <div class="ui centered fluid card">
+        <div class="content">
+          <div class="header">
+            <%= t :current_order %>
           </div>
+          <div class="meta"><!-- extras? --></div>
+          <div class="description">
+            The order you are current working on.
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="two ui buttons">
+            <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'ui basic green button' do %>
+              <%= t :update_current_order %>
+            <% end %>
 
-          <div class="blue statistic">
-            <div class="value"><%= @today.first.low %></div>
-            <div class="label"><%= t :minimum_temperature %></div>
+            <%= link_to shopping_list_path(Order.find(session[:current_order_id])), title: 'Shopping List', class: 'ui basic blue button' do %>
+              <%= t :get_shopping_list %>
+            <% end %>
+
           </div>
         </div>
       </div>
-
-    </div>
+    <% end %>
   </div>
-</div>
+
+  <div class="column"> <!-- weather -->
+    <div class="ui fluid card">
+      <div class="content">
+        <img src="<%= @api_response.image.url %>" class="right floated mini ui image">
+        <div class="header">
+          <%= t @today.first.day.to_sym %>
+        </div>
+        <div class="meta"><%= t @today.first.text.to_sym %></div>
+        <div class="description">
+          <div class="ui two column centered grid">
+            <div class="column">
+              <div class="ui red statistic">
+                <div class="value"><%= @today.first.high %></div>
+                <div class="label"><%= t :maximum_temperature %></div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="ui blue statistic">
+                <div class="value"><%= @today.first.low %></div>
+                <div class="label"><%= t :minimum_temperature %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- end second column -->
+</div> <!-- end grid -->
 
 <div class="ui divider"></div>
 <!-- new order etc -->
@@ -122,36 +127,12 @@
 </div>
 
 <div class="ui divider"></div>
-
 <!-- weather -->
-<h2 class="ui centered header"><%= t :weather_forecast %> <%= "(#{@response.location.city}, #{@response.location.country})"%></h2>
+<h2 class="ui centered header"><%= t :weather_forecast %> <%= "(#{t @api_response.location.city.to_sym}, #{t @api_response.location.country.to_sym})"%></h2>
 
 <div class="ui four stackable cards">
 
   <% @forecasts.each do |forecast| %>
-  <div class="ui card">
-    <div class="content">
-      <img src="<%= @response.image.url %>" class="right floated mini ui image">
-      <div class="header">
-        <%= t forecast.day.to_sym %>
-      </div>
-      <div class="meta"><%= t forecast.text.to_sym %></div>
-      <div class="description">
-
-        <div class="ui tiny statistics">
-          <div class="red statistic">
-            <div class="value"><%= forecast.high %></div>
-            <div class="label"><%= t :maximum_temperature %></div>
-          </div>
-
-          <div class="blue statistic">
-            <div class="value"><%= forecast.low %></div>
-            <div class="label"><%= t :minimum_temperature %></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+    <%= render partial: 'forecast', locals: { today: forecast, api_response: @api_response } %>
   <% end %>
 </div>

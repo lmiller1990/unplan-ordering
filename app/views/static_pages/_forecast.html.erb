@@ -1,0 +1,25 @@
+<div class="ui fluid card">
+  <div class="content">
+    <img src="<%= api_response.image.url %>" class="right floated mini ui image">
+    <div class="header">
+      <%= t today.day.to_sym %>
+    </div>
+    <div class="meta"><%= t today.text.to_sym %></div>
+    <div class="description">
+      <div class="ui two column centered grid">
+        <div class="column">
+          <div class="ui red statistic">
+            <div class="value"><%= today.high %></div>
+            <div class="label"><%= t :maximum_temp %></div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui blue statistic">
+            <div class="value"><%= today.low %></div>
+            <div class="label"><%= t :minimum_temp %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
