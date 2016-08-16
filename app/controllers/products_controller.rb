@@ -4,10 +4,12 @@ class ProductsController < ApplicationController
 
     if @product.save
       @product.update_attributes(base_product: true)
+      @product.update_attributes(days_to_order: remove_blank_day)
       flash[:success] = "Product created"
     else
       flash[:failure] = "Product not created"
     end
+    puts @product.inspect
     redirect_to root_path
   end
 
@@ -43,6 +45,10 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :theshold_to_order, :price, :unit_type, :desired_total)
+    params.require(:product).permit(:name, :theshold_to_order, :price, :unit_type, :desired_total, :days_to_order => [])
+  end
+
+  def remove_blank_day
+    params[:product][:days_to_order] - [""]
   end
 end

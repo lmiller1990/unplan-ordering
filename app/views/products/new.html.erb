@@ -9,6 +9,11 @@
         <%= f.input :price, wrapper_html: { class: 'field' } %>
         <%= f.input :desired_total, wrapper_html: { class: 'field' } %>
         <%= f.input :unit_type, wrapper_html: { class: 'field' } %>
+        <%= f.input :days_to_order, as: :select,
+                    collection: ["Everyday"] + Date::DAYNAMES,
+                    wrapper_html: { class: 'field' },
+                    input_html: { class: "ui dropdown", multiple: true },
+                    selected: "Everyday" %>
       </div>
     <% end %>
   </div>
