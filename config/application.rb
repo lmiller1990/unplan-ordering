@@ -31,12 +31,6 @@ module OpenTranslation
       g.routes false
     end
 
-    Openweather2.configure do |config|
-      puts "Configuring openweather"
-      config.endpoint = 'http://api.openweathermap.org/data/2.5/weather'
-      config.apikey = "bf678a15c92dc62ce8c25820512dd082"
-    end
-
     config.i18n.default_locale = 'en'
 
     # Settings in config/environments/* take precedence over those specified here.
