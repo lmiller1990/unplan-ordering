@@ -3,25 +3,27 @@
 <%= semantic_form_for(@product, html: { class: 'ui form'}) do |f| %>
   <div class="ui segment">
     <%= f.inputs do %>
-      <div class="fields">
-        <%= f.input :name, wrapper_html: { class: 'three wide field' } %>
+      <div class="five fields">
+        <%= f.input :name, wrapper_html: { class: 'field' } %>
         <%= f.input :theshold_to_order, input_html: { value: number_with_precision(@product.theshold_to_order, precision: 2)}, wrapper_html: { class:  'three wide field' } %>
-        <%= f.input :price, wrapper_html: { class: 'two wide field' } %>
-        <%= f.input :desired_total, wrapper_html: { class: 'two wide field' } %>
-        <%= f.input :unit_type, wrapper_html: { class: 'two wide field' } %>
+        <%= f.input :price, wrapper_html: { class: 'field' } %>
+        <%= f.input :desired_total, wrapper_html: { class: 'field' } %>
+        <%= f.input :unit_type, wrapper_html: { class: 'field' } %>
+      </div>
+      <div class="one field">
         <%= f.input :days_to_order,
             collection: ["Everyday"] + Date::DAYNAMES,
             wrapper_html: { class: 'three wide field'},
             input_html: { class: "ui selection dropdown", multiple: true },
             selected: "Everyday" %>
+      </div>
     <% end %>
   </div>
-    <br />
+  <br />
   <%= f.action :submit, data: { disable_with: 'Submitting...' }, button_html: { class: 'small right floated ui blue submit button' } %>
+</div>
 <% end %>
-
 
 <script>
   reload();
-
 </script>

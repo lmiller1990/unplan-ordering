@@ -3,7 +3,7 @@
 
 <%= semantic_form_for(@order, html: { class: 'ui form' }, remote: true) do |f| %>
   <div class="ui segment">
-    <%= f.semantic_fields_for :products, @order.products do |p| %>
+    <%= f.semantic_fields_for :products, @order_products do |p| %>
 
         <%= p.inputs do %>
         <div class="four fields">

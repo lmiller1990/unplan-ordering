@@ -62,6 +62,13 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_products = []
+    @order.products.each do |p|
+      if p.order_today?
+        @order_products.push(p)
+      end
+    end
+  
     @shopping_list = ShoppingList.new
   end
 
