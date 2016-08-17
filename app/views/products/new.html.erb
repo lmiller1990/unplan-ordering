@@ -5,7 +5,7 @@
     <%= f.inputs do %>
       <div class="fields">
         <%= f.input :name, wrapper_html: { class: 'three wide field' } %>
-        <%= f.input :theshold_to_order, wrapper_html: { class:  'three wide field' } %>
+        <%= f.input :theshold_to_order, input_html: { value: number_with_precision(@product.theshold_to_order, precision: 2)}, wrapper_html: { class:  'three wide field' } %>
         <%= f.input :price, wrapper_html: { class: 'two wide field' } %>
         <%= f.input :desired_total, wrapper_html: { class: 'two wide field' } %>
         <%= f.input :unit_type, wrapper_html: { class: 'two wide field' } %>

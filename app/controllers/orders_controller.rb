@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
       end
       @shopping_lists.push(@shopping_list)
     end
-    @shopping_lists = Kaminari.paginate_array(@shopping_lists.sort_by {
+
+    @lists = Kaminari.paginate_array(@shopping_lists.sort_by {
       |i| i.created_at
     }.reverse).page(params[:page]).per(5)
   end

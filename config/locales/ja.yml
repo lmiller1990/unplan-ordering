@@ -54,7 +54,7 @@ ja:
   order_description: "新しい発注をする。以前の発注を表示する。"
   product_description: "新しい商品を登録する。全商品を表示する。"
   language_description: "表示言語を変更する。"
-  current_order_description: "本日発注を編集する。"
+  current_order_description: "本日発注を編集する。新しい発注を作成する。"
 
   Tornado: "台風"
   Rain: "雨"

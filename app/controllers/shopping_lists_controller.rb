@@ -6,8 +6,6 @@ class ShoppingListsController < ApplicationController
       @was_created = true
     end
 
-    puts @shopping_list.inspect
-
     if @was_created
       current_order.update_attributes(shopping_list_id: @shopping_list.id)
       current_order.save
@@ -19,13 +17,11 @@ class ShoppingListsController < ApplicationController
     end
     current_order.products.each_with_index do |p,idx|
       item = nil
-      puts "Was created? #{@was_created}"
       if @was_created
         item = @shopping_list.shopping_items.build
       else
         item = @shopping_list.shopping_items[idx]
       end
-      puts "updating item:", item.inspect
 
       item.set_shopping_item_attributes(p)
       if item.save

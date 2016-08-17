@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817105424) do
+ActiveRecord::Schema.define(version: 20160817134823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20160817105424) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer  "theshold_to_order"
-    t.integer  "in_stock",          default: 0
+    t.float    "theshold_to_order", default: 0.0
+    t.float    "in_stock",          default: 0.0
     t.integer  "price",             default: 0
-    t.string   "name",              default: "Item name"
+    t.string   "name",              default: ""
     t.string   "day_to_order"
-    t.string   "unit_type",         default: "Item"
+    t.string   "unit_type",         default: ""
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "order_id"
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20160817105424) do
 
   create_table "shopping_items", force: :cascade do |t|
     t.integer  "item_amount",      default: 0
-    t.integer  "item_cost"
+    t.integer  "item_cost",        default: 0
     t.integer  "total_cost",       default: 0
-    t.string   "item_name",        default: "Item name"
+    t.string   "item_name",        default: ""
     t.integer  "shopping_list_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.boolean  "need_to_order",    default: false
     t.index ["shopping_list_id"], name: "index_shopping_items_on_shopping_list_id", using: :btree
   end

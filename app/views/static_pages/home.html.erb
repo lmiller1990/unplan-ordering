@@ -1,7 +1,6 @@
 <!-- current order -->
 <div class="ui stackable two column grid">
   <div class="column">
-    <% if !session[:current_order_id].nil? %>
       <div class="ui centered fluid card">
         <div class="content">
           <div class="header">
@@ -14,18 +13,23 @@
         </div>
         <div class="extra content">
           <div class="two ui buttons">
-            <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'ui basic green button' do %>
-              <%= t :update_current_order %>
+
+            <%= link_to new_order_path, title: "New Order", class: 'ui basic blue button' do %>
+              <%= t :create_new_order %>
+            <% end %>
+            <% if !session[:current_order_id].nil? %>
+              <%= link_to order_path(Order.find(session[:current_order_id])), title: 'Current Order', class: 'ui basic green button' do %>
+                Update Order [<%= japanese_date_format(Order.find(session[:current_order_id]).created_at.strftime("%x")) %>]
+              <% end %>
             <% end %>
 
-            <%= link_to shopping_list_path(Order.find(session[:current_order_id])), title: 'Shopping List', class: 'ui basic blue button' do %>
-              <%= t :get_shopping_list %>
-            <% end %>
+            <%#= link_to shopping_list_path(Order.find(session[:current_order_id])), title: 'Shopping List', class: 'ui basic blue button' do %>
+              <%#= t :get_shopping_list %>
+            <%# end %>
 
           </div>
         </div>
       </div>
-    <% end %>
   </div>
 
   <div class="column"> <!-- weather -->
@@ -69,19 +73,15 @@
   <div class="ui card">
     <div class="content">
       <div class="header">
-        <%= t :ordering %>
+        <%= t :history %>
       </div>
       <div class="meta"><!-- extras? --></div>
       <div class="description">
-        <%= t :order_description %>
+        <%= t :history_description %>
       </div>
     </div>
     <div class="extra content">
       <div class="two ui buttons">
-        <%= link_to new_order_path,  data: { disable_with: 'Creating...' }, title: 'Create order', class: 'ui basic green button' do %>
-          <%= t :create_new_order %>
-        <% end %>
-
         <%= link_to orders_path, class: 'ui basic blue button' do %>
           <%= t :show_all_orders %>
         <% end %>

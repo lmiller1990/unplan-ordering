@@ -7,8 +7,10 @@ class ShoppingItem < ApplicationRecord
   def set_shopping_item_attributes(product)
     self.item_name = product.name
     self.item_cost = product.price
-    self.item_amount = product.desired_total - product.in_stock
+    self.item_amount = (product.desired_total - product.in_stock).ceil
     self.total_cost = self.item_amount * self.item_cost
+    puts product.in_stock, product.theshold_to_order
     self.need_to_order = product.in_stock <= product.theshold_to_order ? true : false
   end
+
 end
