@@ -6,3 +6,7 @@
 <%= link_to shopping_list_path(@shopping_list, format: :pdf), target: 'blank', class: 'ui right floated labeled icon button' do %>
   <i class="print icon"></i> <%= t :print_shopping_list %>
 <% end %>
+
+<%= link_to order_path(@current_order), class: 'ui left floated green button' do %>
+  Return to current order
+<% end %>

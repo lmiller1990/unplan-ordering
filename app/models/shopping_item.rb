@@ -5,8 +5,6 @@ class ShoppingItem < ApplicationRecord
   scope :need_to_order, -> { where(need_to_order: true) }
 
   def set_shopping_item_attributes(product)
-    puts "Product:", product.inspect
-    puts "Self", self.inspect
     self.item_name = product.name
     self.item_cost = product.price
     self.item_amount = product.desired_total - product.in_stock
