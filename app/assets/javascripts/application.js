@@ -25,3 +25,7 @@ function submitter() {
   $('#order_submit_action').submit()
   console.log("submitted")
 }
+
+function reload(){
+    $('.dropdown').dropdown('refresh');
+}

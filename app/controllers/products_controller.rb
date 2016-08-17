@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @days = ["Everyday"] + Date::DAYNAMES
+
     @product = Product.new
   end
 
