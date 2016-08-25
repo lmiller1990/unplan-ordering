@@ -10,7 +10,7 @@ class ShoppingListsController < ApplicationController
       current_order.update_attributes(shopping_list_id: @shopping_list.id)
       current_order.save
     end
-    
+
     current_order.products.each_with_index do |p,idx|
       item = nil
       if @was_created
@@ -40,6 +40,7 @@ class ShoppingListsController < ApplicationController
       format.pdf do
         render pdf: "shop_list.pdf",
         template: "shopping_lists/show.pdf.erb",
+        encoding: 'UTF-8',
         locals: { shopping_list: @shopping_list, current_order: @current_order, shopping_items: @shopping_items }
       end
       format.html
