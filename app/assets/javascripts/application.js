@@ -26,6 +26,11 @@ function submitter() {
   console.log("submitted")
 }
 
+def asdf
+  Element.find('order_submit_action').submt
+end
+
+
 function reload(){
     $('.dropdown').dropdown('refresh');
 }

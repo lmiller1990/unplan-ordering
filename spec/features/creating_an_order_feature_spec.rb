@@ -15,6 +15,6 @@ feature 'create an order', type: :feature do
     click_on 'Update Order'
 
     expect(page).to have_selector("#order_products_attributes_0_name[value='#{base_product.name}']")
-    expect(page).to have_selector("#order_products_attributes_0_in_stock[value='50']")
+    expect(page).to have_selector("#order_products_attributes_0_in_stock[value='50.0']")
   end
 end

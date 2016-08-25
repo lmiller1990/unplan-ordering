@@ -13,7 +13,6 @@ class Order < ApplicationRecord
      base_products = Product.base_products
 
      base_products.each do |product|
-       puts product.inspect
        if product.order_today?
          attrs = product.attributes.except('id')
          attrs['base_product'] = false

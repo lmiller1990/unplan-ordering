@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
         @order_products.push(p)
       end
     end
-  
+
     @shopping_list = ShoppingList.new
   end
 

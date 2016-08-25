@@ -9,6 +9,6 @@ FactoryGirl.define do
     desired_total 10
     base_product false
     order nil
-    days_to_order nil
+    days_to_order ["Everyday"]
   end
 end

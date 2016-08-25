@@ -10,11 +10,7 @@ class ShoppingListsController < ApplicationController
       current_order.update_attributes(shopping_list_id: @shopping_list.id)
       current_order.save
     end
-    puts current_order.inspect
-    puts current_order.products.size
-    current_order.products.each do |i|
-      puts i.inspect
-    end
+    
     current_order.products.each_with_index do |p,idx|
       item = nil
       if @was_created

@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
     else
       flash[:failure] = "Product not created"
     end
-    puts @product.inspect
     redirect_to root_path
   end
 
