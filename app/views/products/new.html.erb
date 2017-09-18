@@ -1,6 +1,6 @@
 <h1>Add a new product to orders</h1>
 
-<%= semantic_form_for(@product, html: { class: 'ui form'}) do |f| %>
+<%= semantic_form_for(@product, html: { class: 'ui form', id: 'product-form'}) do |f| %>
   <div class="ui segment">
     <%= f.inputs do %>
       <div class="five fields">
@@ -26,4 +26,10 @@
 
 <script>
   reload();
+  $('#product-form').submit(function() {
+     // stuff
+     var productName = document.getElementById('product_name').value;
+     //document.getElementById('product_name').value = productName + "Extra";
+     return true;
+ })
 </script>
